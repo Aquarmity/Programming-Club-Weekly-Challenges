@@ -19,7 +19,7 @@ int main()
     else
     {
       cout << num << "\n";
-      for (int i = 0; i <= num; i++)
+      for (int i = 0; i < num; i++)
       {
         string spaceTri (space--, ' ');
         cout << spaceTri;
