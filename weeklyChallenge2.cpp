@@ -1,15 +1,36 @@
 #include <iostream>
-#include <ctype.h>
+#include <algorithm>
+#include <string>
 using namespace std;
 
 int main ()
 {
-    char input;
+    string str;
+    int n;
+    int outputN = 0;
 
-    while (true)
+    cout << "Behold, the magical UpperCaser!\nInput any sentence or word, and it will magically become uppercase!\n";
+
+        getline (cin, str);
+        transform(str.begin(), str.end(), str.begin(), ::toupper);
+        cout << str << "!!\n";
+
+    cout << "For my next trick...\nBehold, the slightly less magical Adder of Numbers!\nInput any number, and it will semi-magically add every number up to and including that number!\n";
+
+    cin >> n;
+
+    for (int i = 0; i < n; i++)
     {
-        cin >> input;
-        toupper (input);
-        cout << input << "!!";
+        outputN = outputN + (i + 1);
     }
+
+    cout << outputN;
+
+    cout << "\nNow, for my grand finale... BEHOLD! The very magical Adder of Numbers That Doesn't Use a For Loop!\n it's the same thing as last time but built different lol\n";
+    n = 0;
+    outputN = 0;
+
+        cin >> n;
+        outputN = (n * (n + 1)) / 2;
+        cout << outputN;
 }
