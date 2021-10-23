@@ -14,30 +14,29 @@ int main()
     int x;
     string notPig;
     getline(cin, notPig);
-    notPig = notPig + ' ';
+    notPig = notPig + ' '; //space added for staying in array range
 
-    //position in the array will be its position in the length + 1 hmm
     int length = notPig.length();
     char sep[length];
-    vector<int> spacePos{-1};
+    vector<int> spacePos{-1}; //need to add a "fake space" in the front of the string for detecting the first word
 
     for (int i = 0; i < length; i++)
     {
-        sep[i] = notPig[i];
+        sep[i] = notPig[i]; //converts the string to char array
         if (sep[i] == ' ')
         {
-           spacePos.push_back(i);
+           spacePos.push_back(i); //stores position in array of the spaces
         }
     }
 
     for (int i = 0; i < length; i++)
     {
-        x = 1;
-        if (find(spacePos.begin(), spacePos.end(), i - 1) != spacePos.end())
+        x = 1; //I don't actually know why x needs to start as 1 but it does
+        if (find(spacePos.begin(), spacePos.end(), i - 1) != spacePos.end()) //checks if start of new word
         {
             if (find(vowels.begin(), vowels.end(), sep[i]) != vowels.end())
             {
-                for (int k = i; k < spacePos[s + 1]; k++)
+                for (int k = i; k < spacePos[s + 1]; k++) //just outputs the word
                 {
                     cout << sep[k];
                 }
@@ -46,18 +45,18 @@ int main()
             }
             else if (find(consonants.begin(), consonants.end(), sep[i]) != consonants.end())
                 {
-                    for (int k = i + 1; k < spacePos[s + 1] && find(consonants.begin(), consonants.end(), sep[k]) != consonants.end(); k++)
+                    for (int k = i + 1; k < spacePos[s + 1] && find(consonants.begin(), consonants.end(), sep[k]) != consonants.end(); k++) //finds consonant clusters at the beginning of words
                     {
                         if (find(consonants.begin(), consonants.end(), sep[k]) != consonants.end())
                         {
                             x++;
                         }
                     }
-                    for (int m = i + x; m < spacePos[s + 1]; m++)
+                    for (int m = i + x; m < spacePos[s + 1]; m++) //outputs the words after the first consonant(s)
                     {
                         cout << sep[m];
                     }
-                    for (int n = i; n < i + x; n++)
+                    for (int n = i; n < i + x; n++) //outputs the first consonant(s)
                     {
                         cout << sep[n];
                     }
@@ -66,5 +65,4 @@ int main()
                 }
         }
     }
-    
 }
