@@ -7,7 +7,7 @@ iHour = int(input("hour (24 hour time): "))
 iMinute = int(input("minute: "))
 iSecond = float(input("second (can include decimal): "))
 
-seconds = float(input("How many seconds before/after? "))
+seconds = float(input("How many seconds do you want to add? "))
 
 days = math.floor(seconds / 86400)
 seconds %= 86400
